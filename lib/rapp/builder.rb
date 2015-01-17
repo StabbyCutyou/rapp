@@ -20,7 +20,7 @@ module Rapp
     class << self
       def new_app(opts={})
         # Get name
-        raise ArgumentError.new("You must provide a name") unless app_name = opts.delete("name")
+        raise ArgumentError.new("You must provide a name") unless app_name = opts.delete(:name)
         # Check if folder exists
         root_dir = "#{`pwd`.strip}/#{app_name}"
         raise ArgumentError.new("Directory #{root_dir} already exists") if File.directory?(root_dir) 
