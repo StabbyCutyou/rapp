@@ -6,7 +6,7 @@ module Rapp
         options = {:name=>args[0]}
 
         OptionParser.new do |opts|
-          opts.banner = "Usage: rapp new [app_name]"
+          opts.banner = "Usage: rapp [app_name]"
         end.parse!
 
         options
