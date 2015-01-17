@@ -2,6 +2,10 @@
 
 Rapp - The Ruby App Scaffolder
 
+## Note
+
+Prior to this incarnation, there was an older, similar gem named Rapp which was abandoned. I have obtained the authors permission both for use of the name, as well as for use of the project on Ruby Gems.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +26,7 @@ Or install it yourself as:
 
 Using Rapp is incredibly simple. It's designed to work like familiar scaffolders / builders in the ruby community (think `rails new`).
 
-Currently, Rapp is in early development, and additional features are forthcoming. There is a Roadmap at the bottom of the Readme to highlight some of the work I feel is important to prioritize before a full v1 release. In addition to features, this includes the internal organization of the code as well, as the current state is more prototypical than it is final release quality.
+Currently, Rapp is in early development, and additional features are forthcoming. There is a Roadmap at the bottom of the Readme to highlight some of the work I feel is important to prioritize before a full v1 release. In addition to features, this includes the internal organization of the code as well.
 
 ### Ethos
 
@@ -131,3 +135,7 @@ At the moment, this gem serves to fit a need that I found myself having and figu
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+# Contact
+
+Comments? Criticisms? Concerns? Open an issue on Github, or simply tweet at me. I'm @StabbyCutyou on Twitter.
