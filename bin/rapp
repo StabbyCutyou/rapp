@@ -2,5 +2,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'rapp/builder'
+require 'rapp/cli'
 
-Rapp::Builder.new_app({"name"=>ARGV[0]})
+opts = Rapp::CLI.parse(ARGV)
+Rapp::Builder.new_app(opts)

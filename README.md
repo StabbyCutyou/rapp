@@ -26,7 +26,7 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 ### Ethos
 
-Rapp is not a framework for running an app or building an app from pieces-parts. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceities, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependencty of the app you create.
+Rapp is not a framework for running an app or building an app from pieces-parts. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependencty of the app you create.
 
 Rapps are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
@@ -37,10 +37,10 @@ Rapp is in no way shape or form meant for building web applications. You are fre
 Creating a new Rapp is simple
 
 ```shell
-rapp new my_new_rapp
+rapp my_new_rapp
 ```
 
-The only requirement is that the directory must not exist / be empty, as a safegaurd against accidentally overwriting any existing projects or Rapps. Otherwise, thats it!
+The only requirement is that the directory must not exist as a safegaurd against accidentally overwriting any existing projects. Otherwise, thats it!
 
 If the command executed successuflly, you should see a report displaying the folders and files that Rapp created for you. After that, you're ready to start building your app!
 
@@ -119,8 +119,7 @@ Currently, Rapp comes with 1 predefined rake task, which is "console". This will
 At the moment, this gem serves to fit a need that I found myself having and figured others might be as well. To that end, my main goals are to provide a simple, stable core ruby app intended to be run as a simple cli program, daemonized process, or otherwise. Currently, my primary roadmap for development is:
 
 1. Generate specs for the users application
-2. Provide proper CLI for the binary, to make future command line functionality easier to implement
-3. Test ease of use integrating Chore / Sidekiq like job systems
+2. Test ease of use integrating Chore / Sidekiq like job systems
 
 ## Contributing
 
