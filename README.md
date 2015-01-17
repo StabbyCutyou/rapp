@@ -114,6 +114,14 @@ Mostly reserved for future use, this is where both Rapp specific specs to ensure
 
 Currently, Rapp comes with 1 predefined rake task, which is "console". This will boot up irb while loading your {app_name}.rb, which will load the rest of your app. This is aliased to "c" for convenience.
 
+## Roadmap
+
+At the moment, this gem serves to fit a need that I found myself having and figured others might be as well. To that end, my main goals are to provide a simple, stable core ruby app intended to be run as a simple cli program, daemonized process, or otherwise. Currently, my primary roadmap for development is:
+
+1. Generate specs for the users application
+2. Provide proper CLI for the binary, to make future command line functionality easier to implement
+3. Test ease of use integrating Chore / Sidekiq like job systems
+
 ## Contributing
 
 1. Fork it ( https://github.com/StabbyCutyou/rapp/fork )
