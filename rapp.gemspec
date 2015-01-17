@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["StabbyCutyou"]
   spec.email         = ["sean.kelly@tapjoy.com"]
   spec.summary       = %q{rapp - A gem for building Ruby Apps}
-  spec.description   = %q{tapp helps you build native ruby apps with a familiar structure and a handful of familiar conventions. Perfect for writing console apps or even daemons in Ruby!}
-  spec.homepage      = ""
+  spec.description   = %q{rapp helps you build native ruby apps with a familiar structure and a handful of familiar conventions.}
+  spec.homepage      = "https://github.com/StabbyCutyou/rapp"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
