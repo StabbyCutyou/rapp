@@ -1,0 +1,55 @@
+require 'env'
+
+module <%= class_name %>Base
+  
+  def self.included(base) #:nodoc:
+    base.extend(ClassMethods)
+    <%= class_name%>Base.boot!
+  end
+
+  module ClassMethods
+    def env
+      @env ||= <%=class_name%>::Env.new(ENV['APP_ENV'] ||= 'development')
+    end
+  
+    def logger
+      @logger ||= Logger.new(ENV['APP_LOG_PATH'] || "./log/app.log").tap do |l|
+        l.level = Logger::DEBUG
+        l.formatter = lambda do |severity, datetime, progname, msg|
+           "[#{datetime} (#{Process.pid})] #{severity} : #{msg}\n"
+        end
+      end
+    end
+  end
+
+  def self.boot!
+    # Load all dependent gems
+    require 'bundler'
+    Bundler.require(:default, <%=class_name %>.env.to_s)
+  
+    # Set up additional load paths
+  
+    $:.unshift File.dirname("./")
+    $:.unshift File.dirname("./lib")
+    $:.unshift File.dirname("./config")
+    $:.unshift File.dirname("./app")
+  
+    # Load the right environment initializer
+  
+    require "config/environments/#{<%=class_name %>.env.to_s}"
+    
+    # Load initializers
+    
+    Dir["./config/initializers/*"].reject { |p| File.directory? p }.each {|file| require file }
+  
+    # Load config
+  
+    Dir["./config/**/*"].reject { |p| File.directory? p }.each {|file| require file}
+    
+    # Load job files
+    
+    Dir["./app/models/**/*"].reject { |p| File.directory? p }.each {|file| require file }
+    Dir["./app/services/**/*"].reject { |p| File.directory? p }.each {|file| require file }
+    Dir["./app/jobs/**/*"].reject { |p| File.directory? p }.each {|file| require file }
+    end
+end

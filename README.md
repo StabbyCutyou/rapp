@@ -64,12 +64,17 @@ Rapp application structure looks like the following:
 * lib/tasks/
 * spec/
 * {app_name}.rb
+* {app_name}_base.rb
 * Gemfile
 * Rakefile
 
 ### {app_name}.rb
 
-Most of the generated code that Rapp creates lives here. This is the primary entry point for you application, and handles things such as:
+This is the primary entry point for you application. It includes {app_name}_base to handle booting and requiring all the dependencies. The class itself is empty, and the only code that specifically resides in this file is adding the current directory to the load path, so it can more easily locate {app_name}_base. All other code for additions to the load path, requiring bundler dependencies, etc etc resides in {app_name}_base.
+
+### {app_name}_base.rb
+
+Most of the generated code that Rapp creates lives here, such as:
 
 * Defining the environment
 * Providing an application level logger
@@ -79,8 +84,6 @@ Most of the generated code that Rapp creates lives here. This is the primary ent
 * Requiring the contents of the app/ directory
 
 You're free to modify any of this code however you see fit - however, most of the code in your core app file is meant to be added to (and not removed) for the convenience of you, the developer. Be that as it may, you are still free to do whatever you want inside of this file.
-
-A future revision will be breaking this behavior out into an application base, so that everything isn't dumped into a single ruby class.
 
 ### App directory
 
