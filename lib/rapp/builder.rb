@@ -42,7 +42,10 @@ module Rapp
           template_data = File.read(template)
           relative_name = template.split("templates/")[1][0..-5]
           # Hack to make the entry point ruby file share the same name as the app
+          # Need to clean this up, make it more extensible...
           relative_name = "#{app_name}.rb" if relative_name == "app.rb"
+          relative_name = "#{app_name}_base.rb" if relative_name == "app_base.rb"
+          
           result = ERB.new(template_data).result(template_binding.instance_eval {binding})
           File.write("#{root_dir}/#{relative_name}", result)
         end
