@@ -1,0 +1,5 @@
+# Load project rake task files
+require 'bundler'
+Bundler.require(:default, ENV['APP_ENV'] || 'development')
+$: << File.expand_path("lib", File.dirname(__FILE__))
+Dir["lib/tasks/*.rake"].each { |f| import f }

@@ -1,0 +1,5 @@
+task :console do
+  exec 'irb -r ./<%=name%>.rb'
+end
+
+task :c => :console
