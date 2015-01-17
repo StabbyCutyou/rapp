@@ -40,7 +40,7 @@ Creating a new Rapp is simple
 rapp new my_new_rapp
 ```
 
-The only requirement is that the directory must not exist / be empty, as a safegaurd against accidentally overwriting any existing projects or Rapps. Otherwise, thats it!
+The only requirement is that the directory must not exist as a safegaurd against accidentally overwriting any existing projects. Otherwise, thats it!
 
 If the command executed successuflly, you should see a report displaying the folders and files that Rapp created for you. After that, you're ready to start building your app!
 
