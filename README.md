@@ -30,7 +30,7 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 ### Ethos
 
-Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
+Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp project, ir is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
 
 Rapps are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
@@ -50,7 +50,7 @@ If the command executed successuflly, you should see a report displaying the fol
 
 ### Dependencies
 
-Rapp only installs 2 dependencies into your application - bundler and rake. Eventually, It will also include rspec, as well as a suite of specs for you to run to validate that the core underpinnings of Rapp are working as expected, in addition to your own custom specs.
+Rapp only installs 2 dependencies into your application - bundler and rake. Optionally, it will also include rspec, as well as a suite of specs for you to run to validate that the core underpinnings of the project are working as expected, in addition to your own custom specs.
 
 ### Layout
 
@@ -113,19 +113,15 @@ These are loaded after Bundler, but before anything in app/
 
 Used for the same purpose as a Rails app or Ruby gem. Any code that falls outside of the norms of app/ would be placed here. Additionally, you may place tasks in lib/tasks/, and they will be registered via the Rake integration
 
-### Spec directory
-
-Mostly reserved for future use, this is where both Rapp specific specs to ensure the well-being of your core application will reside, as well as application specific specs that you write to ensure your custom logic and behaviors are working correctly (You are writing tests... right?)
-
 ### Rake
 
 Currently, Rapp comes with 1 predefined rake task, which is "console". This will boot up irb while loading your {app_name}.rb, which will load the rest of your app. This is aliased to "c" for convenience.
 
-### Specs
+### Specs (Optional)
 
-Optionally you can generate specs for your app to test the underpinnings of what Rapp has created. You can do this by specifying the ```--specs``` or ```-s``` flags on the command line.
+You can generate specs for your app to test the underpinnings of what Rapp has created. You can do this by specifying the ```--specs``` or ```-s``` flags on the command line.
 
-These specs aim to not be in the way of you writing your own specs, and so the spec_helper is sparse, and the generated specs attempt to not include a test for {app_name}, but rather {app_name}_base, so that you can do any {app_name} specific testing in that file yourself.
+These specs aim to not be in the way of you writing your own specs, and so the spec_helper is sparse, and the generated specs attempt to not include a test for {app_name}, but rather {app_name}_base, so that you can do any {app_name} specific testing in that file yourself if you so choose.
 
 Mainly, these are here to help you make changes to a Rapp project once it's been generated if you so need, being able to verify that the core behaviors still function.
 
