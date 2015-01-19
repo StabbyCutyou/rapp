@@ -49,7 +49,7 @@ module Rapp
 
         # Skip spec dirs unless they said they wanted it
         # My intention here is to use "or" specifically, because it does not short-circuit. The second check is very important
-        Dir["#{template_root}/**/*"].reject { |p| puts "#{p} -#{p.include?('spec')}"; File.directory? p or p.include?('spec') }.each do |template|
+        Dir["#{template_root}/**/*"].reject { |p|  File.directory? p or p.include?('spec') }.each do |template|
           template_data = File.read(template)
           relative_name = template.split("templates/")[1][0..-5]
           # Hack to make the entry point ruby file share the same name as the app
@@ -77,11 +77,8 @@ module Rapp
 
         # Create the directory structrue
         SpecStructure.each do |dir|
-          puts "dir is #{dir}"
           name = dir.gsub!('app_name', app_name) if dir.include?("app_name")
-          puts "name is #{name}"
           dir_name = "#{root_dir}/#{name}"
-          #puts "dirname #{dir_name}"
           FileUtils.mkdir_p(dir_name) unless File.directory?(dir_name)
         end
 
@@ -97,7 +94,6 @@ module Rapp
           template_data = File.read(template)
           relative_name = template.split("templates/")[1][0..-5]
           relative_name = relative_name.gsub!('app_name', app_name) if relative_name.include?("app_name")
-          puts "template #{template} rel path #{relative_name}"
           result = ERB.new(template_data).result(template_binding.instance_eval {binding})
           File.write("#{root_dir}/#{relative_name}", result)
         end
