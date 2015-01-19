@@ -33,12 +33,7 @@ module Rapp
         # Build the directory structure first
         Dir.mkdir(root_dir)
 
-        DirectoryStructure.each do |dir|
-          dir_name = "#{root_dir}/#{dir}"
-          FileUtils.mkdir_p(dir_name) unless File.directory?(dir_name)
-        end
-        
-        # For each template, render it, place it in the folder structure it corresponds to
+        add_directories(DirectoryStructure, app_name, root_dir)
         
         # Construct the data object
         template_binding = OpenStruct.new(
@@ -47,18 +42,11 @@ module Rapp
             :rapp_version=>Rapp::VERSION
           })
 
+        # For each template, render it, place it in the folder structure it corresponds to
         # Skip spec dirs unless they said they wanted it
         # My intention here is to use "or" specifically, because it does not short-circuit. The second check is very important
         Dir["#{template_root}/**/*"].reject { |p|  File.directory? p or p.include?('spec') }.each do |template|
-          template_data = File.read(template)
-          relative_name = template.split("templates/")[1][0..-5]
-          # Hack to make the entry point ruby file share the same name as the app
-          # Need to clean this up, make it more extensible...
-          relative_name = "#{app_name}.rb" if relative_name == "app.rb"
-          relative_name = "#{app_name}_base.rb" if relative_name == "app_base.rb"
-          
-          result = ERB.new(template_data).result(template_binding.instance_eval {binding})
-          File.write("#{root_dir}/#{relative_name}", result)
+            write_file(template, template_binding, app_name, root_dir)
         end
 
         # If set on the cli, build the spec stuff
@@ -68,6 +56,24 @@ module Rapp
         puts "#{`find ./#{app_name}`}"
       end
 
+      def add_directories(directories, app_name, root_dir)
+        directories.each do |dir|
+          dir.gsub!('app_name', app_name) if dir.include?("app_name")
+          dir_name = "#{root_dir}/#{dir}"
+          FileUtils.mkdir_p(dir_name) unless File.directory?(dir_name)
+        end
+      end
+
+      def write_file(template_name, template_binding, app_name, root_dir)
+        template_data = File.read(template_name)
+        relative_name = template_name.split("templates/")[1][0..-5]
+        # Hack to make the entry point ruby file share the same name as the app
+        relative_name.gsub!("app_name", app_name)
+
+        result = ERB.new(template_data).result(template_binding.instance_eval {binding})
+        File.write("#{root_dir}/#{relative_name}", result)
+      end
+
       def add_specs(root_dir, options)
         app_name = options[:name]
         #add rspec to the gemfile
@@ -75,12 +81,8 @@ module Rapp
           f.puts 'gem "rspec", "~>3.1.0"'
         end
 
-        # Create the directory structrue
-        SpecStructure.each do |dir|
-          name = dir.gsub!('app_name', app_name) if dir.include?("app_name")
-          dir_name = "#{root_dir}/#{name}"
-          FileUtils.mkdir_p(dir_name) unless File.directory?(dir_name)
-        end
+        # Add the spec specific directories
+        add_directories(SpecStructure, app_name, root_dir)
 
         # Construct the data object
         template_binding = OpenStruct.new(
@@ -91,11 +93,7 @@ module Rapp
 
         # Get all the spec templates
         Dir["#{template_root}/spec/**/*"].reject {|p| File.directory? p }.each do |template|
-          template_data = File.read(template)
-          relative_name = template.split("templates/")[1][0..-5]
-          relative_name = relative_name.gsub!('app_name', app_name) if relative_name.include?("app_name")
-          result = ERB.new(template_data).result(template_binding.instance_eval {binding})
-          File.write("#{root_dir}/#{relative_name}", result)
+          write_file(template, template_binding, app_name, root_dir)
         end
       end
 
