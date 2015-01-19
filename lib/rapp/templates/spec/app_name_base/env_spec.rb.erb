@@ -1,0 +1,35 @@
+require 'spec_helper'
+
+describe <%= class_name %>::Env do
+  context 'when in production mode' do
+    subject {<%= class_name%>::Env.new('production') }
+
+    context '#production?' do
+      it 'should be true' do
+        expect(subject.production?).to eq(true)
+      end
+    end
+
+    context '#development?' do
+      it 'should be false' do
+        expect(subject.development?).to eq(false)
+      end
+    end
+  end
+
+  context 'when in development mode' do
+    subject {<%= class_name%>::Env.new('development') }
+
+    context '#production?' do
+      it 'should be true' do
+        expect(subject.production?).to eq(false)
+      end
+    end
+
+    context '#development?' do
+      it 'should be false' do
+        expect(subject.development?).to eq(true)
+      end
+    end
+  end
+end
