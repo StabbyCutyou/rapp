@@ -1,0 +1,37 @@
+require 'spec_helper'
+
+describe <%= class_name %>Base do
+  context '#RAPP_VERSION' do
+    it 'should be <%= rapp_version%>' do
+      expect(subject::RAPP_VERSION).to eq("<%=rapp_version %>")
+    end
+  end
+
+  context '#env' do
+    before :each do
+      # clear this before each run, restore to it's original value after. Kind of hacky, but dont wanna lose the app_env the user may have set
+      @former_app_env = ENV['APP_ENV']
+      ENV['APP_ENV'] = nil
+
+      # We also need to reset the env in the <%=class_name%> each time, so it tries to create a new Env object and picks up the new ENV value. Also kind of hacky
+      <%= class_name%>.instance_variable_set('@env',nil)
+
+      # These specs are made slightly more hacky to set up because I purposfully chose to have the Env be set once, and not make it automatically detect changes to APP_ENV. When the app boots up, it should detect it's environment once, and thats it.
+    end
+
+    after :each do
+      ENV['APP_ENV'] = @former_app_env
+    end
+
+    context 'when no environment is specified' do
+      it 'defaults to development' do
+        expect(<%= class_name%>.env.to_s).to eq('development')
+      end
+    end
+
+    it 'should get the configured environment from ENV' do
+      ENV['APP_ENV'] = 'production'
+      expect(<%= class_name%>.env.to_s).to eq('production')
+    end
+  end
+end

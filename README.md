@@ -30,7 +30,7 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 ### Ethos
 
-Rapp is not a framework for running an app or building an app from pieces-parts. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
+Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
 
 Rapps are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
@@ -121,12 +121,21 @@ Mostly reserved for future use, this is where both Rapp specific specs to ensure
 
 Currently, Rapp comes with 1 predefined rake task, which is "console". This will boot up irb while loading your {app_name}.rb, which will load the rest of your app. This is aliased to "c" for convenience.
 
+### Specs
+
+Optionally you can generate specs for your app to test the underpinnings of what Rapp has created. You can do this by specifying the ```--specs``` or ```-s``` flags on the command line.
+
+These specs aim to not be in the way of you writing your own specs, and so the spec_helper is sparse, and the generated specs attempt to not include a test for {app_name}, but rather {app_name}_base, so that you can do any {app_name} specific testing in that file yourself.
+
+Mainly, these are here to help you make changes to a Rapp project once it's been generated if you so need, being able to verify that the core behaviors still function.
+
 ## Roadmap
 
 At the moment, this gem serves to fit a need that I found myself having and figured others might be as well. To that end, my main goals are to provide a simple, stable core ruby app intended to be run as a simple cli program, daemonized process, or otherwise. Currently, my primary roadmap for development is:
 
-1. Generate specs for the users application
-2. Test ease of use integrating Chore / Sidekiq like job systems
+1. Generate increased / improved specs for the users application
+2. General code cleanup. Much of the code is prototypical and is not as DRY as it could be (ex: the builder class)
+3. Test ease of use integrating Chore / Sidekiq like job systems
 
 ## Contributing
 

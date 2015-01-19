@@ -2,6 +2,8 @@ require 'env'
 
 module <%= class_name %>Base
   
+  RAPP_VERSION="<%= rapp_version %>"
+
   def self.included(base) #:nodoc:
     base.extend(ClassMethods)
     <%= class_name%>Base.boot!
