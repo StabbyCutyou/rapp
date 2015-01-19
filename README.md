@@ -32,13 +32,13 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp project, ir is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
 
-Rapps are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
+Rapp projects are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
 Rapp is in no way shape or form meant for building web applications. You are free to attempt this if you wish, but if thats your goal, you're much better off with Rails, Sinatra, pure Rack, or any number of alternatives.
 
-### Creating a new Rapp
+### Creating a new Rapp project
 
-Creating a new Rapp is simple
+Creating a new Rapp project is simple
 
 ```shell
 rapp my_new_rapp
@@ -50,11 +50,11 @@ If the command executed successuflly, you should see a report displaying the fol
 
 ### Dependencies
 
-Rapp only installs 2 dependencies into your application - bundler and rake. Optionally, it will also include rspec, as well as a suite of specs for you to run to validate that the core underpinnings of the project are working as expected, in addition to your own custom specs.
+Rapp projects only have 2 dependencies - bundler and rake. Optionally, it will also include rspec, as well as a suite of specs for you to run to validate that the core underpinnings of the project are working as expected, in addition to your own custom specs.
 
 ### Layout
 
-Rapp application structure looks like the following:
+Rapp project structure looks like the following:
 
 * app/
 * app/models/
@@ -66,7 +66,7 @@ Rapp application structure looks like the following:
 * config/initializers/
 * lib/
 * lib/tasks/
-* spec/
+* spec/ (optional)
 * {app_name}.rb
 * {app_name}_base.rb
 * Gemfile
