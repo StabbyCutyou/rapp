@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'erb'
 require 'ostruct'
+require 'rapp/version'
 
 module Rapp
   DirectoryStructure = [
@@ -37,7 +38,11 @@ module Rapp
         template_root = File.join(File.dirname(__FILE__), 'templates')
         
         # Construct the data object
-        template_binding = OpenStruct.new({:name=>app_name, :class_name=>classify(app_name)})
+        template_binding = OpenStruct.new(
+          { :name=>app_name, 
+            :class_name=>classify(app_name),
+            :rapp_version=>Rapp::VERSION
+          })
         Dir["#{template_root}/**/*"].reject { |p| File.directory? p }.each do |template|
           template_data = File.read(template)
           relative_name = template.split("templates/")[1][0..-5]

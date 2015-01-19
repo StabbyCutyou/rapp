@@ -30,7 +30,7 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 ### Ethos
 
-Rapp is not a framework for running an app or building an app from pieces-parts. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
+Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp, the project is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
 
 Rapps are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
