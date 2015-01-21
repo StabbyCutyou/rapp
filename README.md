@@ -8,20 +8,11 @@ Prior to this incarnation, there was an older, similar gem named Rapp which was 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Rapp is meant to run as a command line tool, not as a dependency. You should install it via the command line:
 
-```ruby
-gem 'rapp'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
+```shell
     $ gem install rapp
-
+```
 ## Usage
 
 Using Rapp is incredibly simple. It's designed to work like familiar scaffolders / builders in the ruby community (think `rails new`).
