@@ -1,4 +1,5 @@
 require 'env'
+require 'logger'
 
 module <%= class_name %>Base
   
@@ -15,8 +16,8 @@ module <%= class_name %>Base
     end
   
     def logger
-      @logger ||= Logger.new(ENV['APP_LOG_PATH'] || "./log/app.log").tap do |l|
-        l.level = Logger::DEBUG
+      @logger ||= ::Logger.new(ENV['APP_LOG_PATH'] || "./log/<%= app_name %>.log").tap do |l|
+        l.level = ::Logger::DEBUG
         l.formatter = lambda do |severity, datetime, progname, msg|
            "[#{datetime} (#{Process.pid})] #{severity} : #{msg}\n"
         end
