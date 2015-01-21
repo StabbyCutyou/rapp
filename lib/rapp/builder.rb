@@ -15,6 +15,7 @@ module Rapp
     "config/initializers",
     "lib",
     "lib/tasks",
+    "log"
   ]
 
   SpecStructure = [
