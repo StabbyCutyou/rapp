@@ -131,7 +131,9 @@ At the moment, this gem serves to fit a need that I found myself having and figu
 
 1. Generate increased / improved specs for the users application
 2. General code cleanup. Much of the code is prototypical and is not as DRY as it could be (ex: the builder class)
-3. Test ease of use integrating Chore / Sidekiq like job systems
+3. Dotenv integration for ease of local development w/ sample file containing all env vars
+4. Configurable logging level from the environment
+5. Test ease of use integrating Chore / Sidekiq like job systems
 
 ## Contributing
 
