@@ -106,7 +106,10 @@ Used for the same purpose as a Rails app or Ruby gem. Any code that falls outsid
 
 ### Rake
 
-Currently, Rapp comes with 1 predefined rake task, which is "console". This will boot up irb while loading your {app_name}.rb, which will load the rest of your app. This is aliased to "c" for convenience.
+Currently, Rapp comes with 2 predefined rake tasks:
+
+* console - This will boot up irb while loading your {app_name}.rb, which will load the rest of your app. This is aliased to "c" for convenience.
+* environment - This will load up the {app_name}.rb, which will load the rest of your app, for use in chaining custom rake tasks that will rely on your application code
 
 ### Specs (Optional)
 
