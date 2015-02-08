@@ -32,6 +32,8 @@ module <%= class_name %>Base
   
     # Set up additional load paths
   
+    # I'm not sure if we need "app" in the load path
+    # Everything there should be auto-loaded, but you never know...
     $:.unshift File.expand_path("./app")
   
     # Load the right environment initializer
