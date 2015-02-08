@@ -1,4 +1,6 @@
-$:.unshift File.dirname("./")
+$:.unshift File.expand_path(".")
+$:.unshift File.expand_path("./lib")
+
 require '<%= app_name %>_base'
 class <%= class_name %>
   include <%=class_name%>Base
