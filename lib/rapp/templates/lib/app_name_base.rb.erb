@@ -14,6 +14,10 @@ module <%= class_name %>Base
     def env
       @env ||= <%=class_name%>::Env.new(ENV['APP_ENV'] ||= 'development')
     end
+
+    def root
+      File.expand_path("..", File.dirname(__FILE__))
+    end
   
     def logger
       @logger ||= ::Logger.new(ENV['APP_LOG_PATH'] || "./log/<%= app_name %>.log").tap do |l|
