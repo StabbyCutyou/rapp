@@ -28,17 +28,17 @@ module Rapp
         # Get name
         raise ArgumentError.new("You must provide a name") unless app_name = opts[:name]
         # Check if folder exists
-        root_dir = "#{`pwd`.strip}/#{app_name}"
-        raise ArgumentError.new("Directory #{root_dir} already exists") if File.directory?(root_dir) 
-        
+        root_dir = "#{Dir.pwd.strip}/#{app_name}"
+        raise ArgumentError.new("Directory #{root_dir} already exists") if File.directory?(root_dir)
+
         # Build the directory structure first
         Dir.mkdir(root_dir)
 
         add_directories(DirectoryStructure, app_name, root_dir)
-        
+
         # Construct the data object
         template_binding = OpenStruct.new(
-          { :name=>app_name, 
+          { :name=>app_name,
             :class_name=>classify(app_name),
             :rapp_version=>Rapp::VERSION
           })
@@ -87,7 +87,7 @@ module Rapp
 
         # Construct the data object
         template_binding = OpenStruct.new(
-          { :name=>app_name, 
+          { :name=>app_name,
             :class_name=>classify(app_name),
             :rapp_version=>Rapp::VERSION
           })
@@ -104,7 +104,7 @@ module Rapp
 
       def template_root
         File.join(File.dirname(__FILE__), 'templates')
-      end 
+      end
     end
   end
 end
