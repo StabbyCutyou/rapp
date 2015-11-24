@@ -21,7 +21,7 @@ Currently, Rapp is in early development, and additional features are forthcoming
 
 ### Ethos
 
-Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp project, ir is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
+Rapp is not a framework for running an app. In the future, there may be additional helpers to configure very common components in the ruby community, but the overall goal is to hand you a working application with a few common niceties, then get out of your way. Once you've generated the Rapp project, it is yours to do with as you see fit - the gem itself is not a dependency of the app you create.
 
 Rapp projects are shells to house your app, in a familiar layout, to prevent you from having to write the same boring boilerplate time and time again.
 
@@ -37,7 +37,7 @@ rapp my_new_rapp
 
 The only requirement is that the directory must not exist as a safegaurd against accidentally overwriting any existing projects. Otherwise, thats it!
 
-If the command executed successuflly, you should see a report displaying the folders and files that Rapp created for you. After that, you're ready to start building your app!
+If the command executed successfully, you should see a report displaying the folders and files that Rapp created for you. After that, you're ready to start building your app!
 
 ### Dependencies
 
